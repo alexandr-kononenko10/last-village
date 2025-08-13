@@ -1,6 +1,6 @@
 package cam.scarlettjoubert.game.ui
 
-import cam.scarlettjoubert.game.GameScreen
+import cam.scarlettjoubert.game.ui.GameScreen
 import cam.scarlettjoubert.game.Main
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
@@ -40,7 +40,9 @@ class MainMenuScreen(private val game: Main) : KtxScreen {
 
         // Кнопки
         table.add(TextButton("Старт", buttonStyle).apply {
-            onClick { game.setScreen<GameScreen>() }
+            onClick {
+                game.addScreen(GameScreen(game = game))
+                game.setScreen<GameScreen>() }
         }).width(300f).height(100f).pad(10f).row()
 
         table.add(TextButton("Настройки", buttonStyle).apply {
